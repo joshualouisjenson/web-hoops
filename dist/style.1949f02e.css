@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "7S Bold";
+  src: url("/DSEG7Classic-Bold.086a3a79.woff") format('woff');
+}
+
+body {
+  margin: 0;
+  background-color: #282c34;
+  color: #abb2bf;
+}
+
+/*# sourceMappingURL=/style.1949f02e.css.map */

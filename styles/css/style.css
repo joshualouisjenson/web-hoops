@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "7S Bold";
+  src: url("../../src/assets/fonts/DSEG7-Classic/DSEG7Classic-Bold.woff") format('woff');
+}
+
+body {
+  margin: 0;
+  background-color: #282c34;
+  color: #abb2bf;
+}
