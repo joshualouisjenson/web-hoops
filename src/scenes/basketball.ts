@@ -59,31 +59,14 @@ export class BasketballScene extends BaseScene {
     
     this.physics.add.collider(this.ball, this.goal, this.onBallHitGoal, undefined, this);
 
-    // const walls = this.physics.add.staticGroup();
-    // walls.create(0, 0, null).setOrigin(0, 0).setDisplaySize(this.game.canvas.width, 1);
-    // walls.create(0, 0, null).setOrigin(0, 0).setDisplaySize(1, this.game.canvas.height);
-    // walls.create(this.game.canvas.width - 1, 0, null).setOrigin(0, 0).setDisplaySize(1, this.game.canvas.height);
-
-    // const ground = this.physics.add.staticGroup();
-    // ground.create(0, this.game.canvas.height - 1, null).setOrigin(0, 0).setDisplaySize(this.game.canvas.width, 1);
-
     this.ball.setBounce(1);
     this.ball.setCollideWorldBounds(true);
-    // walls.getChildren().forEach((wall: Phaser.Physics.Arcade.Image) => {
-    //   wall.setCollideWorldBounds(true);
-    //   wall.body.immovable = true;
-    // });
-    // ground.getChildren().forEach((tile: Phaser.Physics.Arcade.Image) => {
-    //   tile.body.immovable = true;
-    // });
-    // this.physics.add.collider(this.ball, walls);
-    // this.physics.add.collider(this.ball, ground);
 
-
+    
     // Create a timer that will count down from 60 seconds
     window.setInterval(this.updateTimer, 100);
 
-    
+
     // Do initial positioning of elements
     this.positionElements();
   }
