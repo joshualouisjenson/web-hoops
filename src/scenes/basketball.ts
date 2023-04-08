@@ -86,7 +86,6 @@ export class BasketballScene extends BaseScene {
     this.input.off('touchmove', this.onPointerMove, this);
     this.input.off('touchend', this.onPointerUp, this);
   }
-  
 
   positionElements(): void {
     this.goal.setPosition(this.scale.width / 2, 300);
