@@ -6,6 +6,7 @@
     "target": "ES6",
     "sourceMap": false,
     "noImplicitAny": true,
+    "esModuleInterop": true,
     "strict": false,
     "typeRoots": [
 			"node_modules/@types",

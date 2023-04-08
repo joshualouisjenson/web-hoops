@@ -1,12 +1,17 @@
-import { MainScene } from './scenes/main-scene';
+import { BasketballScene } from './scenes/basketball';
+import { GameOverScene } from './scenes/game-over';
+import { MenuScene } from './scenes/menu';
+import { StartupScene } from './scenes/startup';
 
 export const GameConfig: Phaser.Types.Core.GameConfig = {
-  title: 'Parcel-Boilerplate',
-  url: 'https://github.com/digitsensitive/phaser3-typescript',
-  version: '1.0',
-  width: 800,
-  height: 600,
-  backgroundColor: 0x3a404d,
+  title: 'NBA 2K Web',
+  width: window.innerWidth,
+  height: window.innerHeight,
+  scale: {
+    mode: Phaser.Scale.RESIZE,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+  },
+  backgroundColor: 'white',
   type: Phaser.AUTO,
   parent: 'game',
   physics: {
@@ -15,5 +20,5 @@ export const GameConfig: Phaser.Types.Core.GameConfig = {
       gravity: { y: 200 }
     }
   },
-  scene: [MainScene]
+  scene: [StartupScene, MenuScene, BasketballScene, GameOverScene ],
 };

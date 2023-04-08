@@ -5,8 +5,15 @@
 
 body {
   margin: 0;
-  background-color: #282c34;
-  color: #abb2bf;
+  background-color: #FAFAFA;
+  color: #020202;
+}
+
+.header {
+  background-color: #020202;
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
 }
 
 /*# sourceMappingURL=/style.1949f02e.css.map */
