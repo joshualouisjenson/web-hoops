@@ -62,7 +62,7 @@ export class BasketballScene extends BaseScene {
     this.ball.setBounce(1);
     this.ball.setCollideWorldBounds(true);
 
-    
+
     // Create a timer that will count down from 60 seconds
     window.setInterval(this.updateTimer, 100);
 
@@ -86,6 +86,7 @@ export class BasketballScene extends BaseScene {
     this.input.off('touchmove', this.onPointerMove, this);
     this.input.off('touchend', this.onPointerUp, this);
   }
+  
 
   positionElements(): void {
     this.goal.setPosition(this.scale.width / 2, 300);
