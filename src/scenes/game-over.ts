@@ -3,10 +3,10 @@ import { BaseScene } from './base-scene';
 
 export class GameOverScene extends BaseScene {
 
-  gameOverText: Phaser.GameObjects.Text;
-  scoreText: Phaser.GameObjects.Text;
-  highscoreText: Phaser.GameObjects.Text;
-  playAgainButton: Phaser.GameObjects.Image;
+  private gameOverText: Phaser.GameObjects.Text;
+  private scoreText: Phaser.GameObjects.Text;
+  private highscoreText: Phaser.GameObjects.Text;
+  private playAgainButton: Phaser.GameObjects.Image;
 
   constructor() {
     super({ key: 'GameOver' });
@@ -15,57 +15,63 @@ export class GameOverScene extends BaseScene {
   create(): void {
     super.create();
 
+    this.sound.play('buzzer', { volume: 0.3, loop: false, detune: -700, rate: 1.2 });
+
+    // Set new high score if applicable
+    const score = this.registry.get('score');
+    let highscore = this.registry.get('highscore');
+    if (score > highscore) {
+      highscore = score;
+      this.registry.set('highscore', score);
+    }
+
     // Show the game over text
-    const gameOverText = this.add.text(
+    this.gameOverText = this.add.text(
       this.scale.width / 2,
-      this.scale.height / 2 - 50,
-      'Game Over',
+      250,
+      'Game Over!',
       {
-        fontSize: '64px',
+        fontSize: '80px',
         color: 'black',
-        fontFamily: 'Arial'
+        fontFamily: 'sport'
       }
     );
-
-    gameOverText.setOrigin(0.5, 0.5);
 
     // Show the score
-    const scoreText = this.add.text(
+    this.scoreText = this.add.text(
       this.scale.width / 2,
-      this.scale.height / 2,
+      400,
       `Score: ${this.registry.get('score')}`,
       {
-        fontSize: '32px',
+        fontSize: '48px',
         color: 'black',
-        fontFamily: 'Arial'
+        fontFamily: 'sport'
       }
     );
 
-    scoreText.setOrigin(0.5, 0.5);
-
     // Show the previous best score
-    const highscore = this.registry.get('highscore');
-    if (highscore) {
-      const highscoreText = this.add.text(
-        this.scale.width / 2,
-        this.scale.height / 2 + 50,
-        `Highscore: ${highscore}`,
-        {
-          fontSize: '32px',
-          color: 'black',
-          fontFamily: 'Arial'
-        }
-      );
-      highscoreText.setOrigin(0.5, 0.5);
-    }
+    this.highscoreText = this.add.text(
+      this.scale.width / 2,
+      460,
+      `High Score: ${highscore}`,
+      {
+        fontSize: '48px',
+        color: 'black',
+        fontFamily: 'sport'
+      }
+    );
+
+    this.gameOverText.setOrigin(0.5, 0.5);
+    this.scoreText.setOrigin(0.5, 0.5);
+    this.highscoreText.setOrigin(0.5, 0.5);
 
     // TODO - Add marketing pop-up?
     
     // Add a play again button
-    const playAgainButton = this.add.image(this.scale.width / 2, this.scale.height / 2 + 100, 'playButton');
-    playAgainButton.setOrigin(0.5, 0.5);
-    playAgainButton.setInteractive({ useHandCursor: true });
-    playAgainButton.on('pointerdown', () => {
+    this.playAgainButton = this.add.image(this.scale.width / 2, this.scale.height / 2 + 200, 'replayButton');
+    this.playAgainButton.setOrigin(0.5, 0.5);
+    this.playAgainButton.setInteractive({ useHandCursor: true });
+    this.playAgainButton.on('pointerdown', () => {
       this.scene.start('Basketball');
     });
 
@@ -75,9 +81,9 @@ export class GameOverScene extends BaseScene {
 
   positionElements(): void {
     // Position the play again button
-    this.scaleImage(this.playAgainButton, 0.2).setPosition(this.scale.width / 2, this.scale.height / 2 + 100);
-    this.scaleImage(this.gameOverText, 0.2).setPosition(this.scale.width / 2, this.scale.height / 2 - 50);
-    this.scaleImage(this.scoreText, 0.2).setPosition(this.scale.width / 2, this.scale.height / 2);
-    this.scaleImage(this.highscoreText, 0.2).setPosition(this.scale.width / 2, this.scale.height / 2 + 50);
+    this.scaleImage(this.playAgainButton, 0.2).setPosition(this.scale.width / 2, this.scale.height / 2 + 200);
+    this.gameOverText.setPosition(this.scale.width / 2, 300);
+    this.scoreText.setPosition(this.scale.width / 2, 400);
+    this.highscoreText.setPosition(this.scale.width / 2, 460);
   }
 }

@@ -1,12 +1,19 @@
 @font-face {
-  font-family: "7S Bold";
-  src: url("../../src/assets/fonts/DSEG7-Classic/DSEG7Classic-Bold.woff") format('woff');
+  font-family: "SevenSegmentBold";
+  src: url("/static/fonts/DSEG7Classic-Bold.ttf");
 }
+
+@font-face {
+  font-family: "sport";
+  src: url("/static/fonts/octin sports rg.otf");
+}
+
 
 body {
   margin: 0;
   background-color: #FAFAFA;
   color: #020202;
+  font-family: "SevenSegmentBold";
 }
 
 .header {
